@@ -1,6 +1,6 @@
 services:
   api:
-    image: ghcr.io/aliguilleng/go-api:latest
+    image: ${API_IMAGE:-ghcr.io/aliguilleng/go-api:latest}
     container_name: devops-api
     restart: unless-stopped
     expose:

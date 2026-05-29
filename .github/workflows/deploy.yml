@@ -36,10 +36,9 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             cd ~/go-api
             git pull origin main
             docker compose down
-            docker compose pull
-            docker compose up -d
+            API_IMAGE=ghcr.io/${{ github.repository }}:latest docker compose pull
+            API_IMAGE=ghcr.io/${{ github.repository }}:latest docker compose up -d
             docker compose ps
