@@ -51,7 +51,7 @@ func infoHandler(w http.ResponseWriter, r *http.Request) {
 
 	servidor := Servidor{
 		Nombre:  "devops-api",
-		Version: "1.0.0",
+		Version: "1.1.0",
 		Uptime:  time.Since(inicio).String(),
 	}
 
