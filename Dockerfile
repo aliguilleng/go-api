@@ -3,8 +3,10 @@ FROM golang:1.23-alpine AS builder
 
 WORKDIR /app
 
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY *.go ./
-COPY go.mod ./
 RUN CGO_ENABLED=0 GOOS=linux go build -o api .
 
 # ── STAGE 2: Imagen final ──
